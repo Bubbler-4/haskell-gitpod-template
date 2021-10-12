@@ -20,3 +20,5 @@ RUN ghcup upgrade && \
     ghcup set ghc && \
     stack config set install-ghc false --global && \
     stack config set system-ghc  true  --global
+RUN cabal update && \
+    cabal install implicit-hie
