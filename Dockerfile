@@ -10,11 +10,13 @@ RUN mkdir -p ~/.ghcup/bin && \
     chmod +x ~/.ghcup/bin/ghcup
 ENV PATH=$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH
 # ghcup upgrade is run twice (get a Haskell-rewrite version, get the recommended version from that)
+# install recommended versions of ghc/cabal/stack/hls; use recommended ghc as default and set up stack options
 RUN ghcup upgrade && \
     ghcup upgrade && \
     ghcup install ghc && \
     ghcup install cabal && \
     ghcup install stack && \
     ghcup install hls && \
+    ghcup set ghc && \
     stack config set install-ghc false --global && \
     stack config set system-ghc  true  --global
