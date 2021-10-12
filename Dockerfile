@@ -8,7 +8,7 @@ USER gitpod
 RUN mkdir -p ~/.ghcup/bin && \
     curl https://gitlab.haskell.org/haskell/ghcup/raw/master/ghcup > ~/.ghcup/bin/ghcup && \
     chmod +x ~/.ghcup/bin/ghcup
-ENV PATH="/home/gitpod/.cabal/bin:/home/gitpod/.ghcup/bin:${PATH}"
+ENV PATH=$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH
 # ghcup upgrade is run twice (get a Haskell-rewrite version, get the recommended version from that)
 RUN ghcup upgrade && \
     ghcup upgrade && \
